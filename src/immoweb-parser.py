@@ -1,11 +1,23 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium_stealth import stealth
+
 from bs4 import BeautifulSoup
 
 def get_selenium_driver():
     options = Options()
     options.headless = True
     driver = webdriver.Chrome(executable_path='chromedriver', options=options)
+
+    stealth(driver,
+        languages=["en-US", "en"],
+        vendor="Google Inc.",
+        platform="Win32",
+        webgl_vendor="Intel Inc.",
+        renderer="Intel Iris OpenGL Engine",
+        fix_hairline=True,
+        )
+
     return driver
 
 
