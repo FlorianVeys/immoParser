@@ -9,5 +9,8 @@
 [Ss]cripts
 pyvenv.cfg
 .venv
+venv
 pip-selfcheck.json
 .DS_Store
+.vscode
+*.pyc
