@@ -8,7 +8,21 @@ class Home:
         self.land_surface = 0
 
     def __str__(self):
-        return "{description} - {link}".format(
+        return "description: {description}\nlink: {link}\nprice: {price}\naddress: {address}\nbedroom: {bedroom}\nlandSurface: {surface}".format(
             description=self.description,
-            link=self.link
+            link=self.link,
+            price=self.price,
+            address=self.address,
+            bedroom=self.bedroom_count,
+            surface=self.land_surface
+        )
+
+    def __repr__(self):
+        return "description: {description}\nlink: {link}\nprice: {price}\naddress: {address}\nbedroom: {bedroom}\nlandSurface: {surface}".format(
+            description=self.description,
+            link=self.link,
+            price=self.price,
+            address=self.address,
+            bedroom=self.bedroom_count,
+            surface=self.land_surface
         )

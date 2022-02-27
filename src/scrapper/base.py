@@ -11,6 +11,10 @@ class Scrapper(ABC):
         self.driver = self.__construct_selenium_driver()
         super().__init__()
 
+    def close_driver(self):
+        self.driver.close()
+        self.driver.quit()
+
     def __construct_selenium_driver(self):
         options = Options()
         options.headless = True
