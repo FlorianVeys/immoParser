@@ -26,3 +26,9 @@ class Home:
             bedroom=self.bedroom_count,
             surface=self.land_surface
         )
+
+    def __eq__(self, other):
+        return self.link == other.link
+
+    def __hash__(self):
+        return hash(self.link)

@@ -1,11 +1,20 @@
-from scrapper.immoweb import ImmowebParser
+from scrapper.scrapperFactory import ScrapperFactory
+
+urls = {
+    "gembloux": "https://www.immoweb.be/fr/recherche/maison/a-vendre/gembloux/5030?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest",
+    "waremme": "https://www.immoweb.be/fr/recherche/maison/a-vendre/waremme/4300?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest",
+    "helecine": "https://www.immoweb.be/fr/recherche/maison/a-vendre/helecine/1357?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest",
+    "louvain_la_neuve": "https://www.immoweb.be/fr/recherche/maison/a-vendre?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&postalCodes=BE-1348,BE-1340&page=1&orderBy=cheapest",
+    "wavre": "https://www.immoweb.be/fr/recherche/maison/a-vendre/wavre/1300?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest"
+}
 
 if __name__ == "__main__":
-    #url = "https://www.immoweb.be/fr/recherche/maison/a-vendre?countries=BE&geoSearchAreas=s{~tHidi\?lfXlm@j_Nxu@fcGp\ntE`z@rxHbz@n`EvfAxeD`kAx}BxfAxqCbTtY|u@hLxcDuEvq@i`@rsAk`@h`Bkt@djEuEnoAkt@tK_SfkAq`Et\_g@vsAolDdTuYlXiLlXcoAlXo`Eki@yyD?ckCgTesDnG_{@jz@yeDxbAyxMvKmdCfC{iGgCmpBmXesDum@egE{q@ckCav@ohFcv@crM{q@mxCqm@aoAyjCigJ_v@m|Asm@?cTkLujCjLckA_SywA?kX~Rm~@hLgoAl|A{lBtm@_e@d_Duq@taAcTxiBgi@tm@i~@xqCgCp|F{Ojt@eC`cBy`@l|A}d@taAmm@p|Fo\vaAmGzmEw`@`oAgCwm@&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest"
-    url = "https://www.immoweb.be/fr/recherche/maison/a-vendre/gembloux/5030?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest"
+    scrapperFactory = ScrapperFactory()
 
-    immowebParse = ImmowebParser()
-    homes = immowebParse.scrap(url)
+    homes = set()
+    for location, url in urls.items():
+        homes.update(scrapperFactory.scrap(url))
 
-    immowebParse.close_driver()
+    scrapperFactory.close_drivers()
+
     print(homes)
