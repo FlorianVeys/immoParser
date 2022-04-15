@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium_stealth import stealth
+from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 
 
@@ -18,8 +19,7 @@ class Scrapper(ABC):
     def __construct_selenium_driver(self):
         options = Options()
         options.headless = True
-        driver = webdriver.Chrome(
-            executable_path='chromedriver', options=options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
         stealth(
             driver,
