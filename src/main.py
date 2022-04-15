@@ -1,5 +1,5 @@
-from dotenv import load_dotenv
 from scrapper.main import scrapUrls
+from dao.homesDao import HomesDao
 
 urls = {
     "gembloux": "https://www.immoweb.be/fr/recherche/maison/a-vendre/gembloux/5030?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest",
@@ -9,17 +9,9 @@ urls = {
     "wavre": "https://www.immoweb.be/fr/recherche/maison/a-vendre/wavre/1300?countries=BE&hasGarden=true&isALifeAnnuitySale=false&isUnderOption=false&maxPrice=300000&minBedroomCount=2&page=1&orderBy=cheapest"
 }
 
-def application_start():
-    load_dotenv()
-
-def application_stop():
-    None
-
 if __name__ == "__main__":
-    application_start()
-
     homes = scrapUrls(urls)
+    
+    homeDao = HomesDao()
 
     print(homes)
-
-    application_stop()
