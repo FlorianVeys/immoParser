@@ -28,7 +28,6 @@ pyOpenSSL = "==22.0.0"
 webdriver-manager = "*"
 pymongo = "*"
 python-dotenv = "*"
-marshmallow = "*"
 
 [dev-packages]
 

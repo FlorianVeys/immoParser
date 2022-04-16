@@ -15,4 +15,4 @@ class MongoManager(object):
         if MongoManager.__database != None:
             raise Exception("This class is a singleton!")
         else:
-            MongoManager.__database = MongoClient(MONGO_DB.URL, MONGO_DB.PORT)[MONGO_DB.DATABASE]
+            MongoManager.__database = MongoClient(MONGO_DB.URL, int(MONGO_DB.PORT))[MONGO_DB.DATABASE]
