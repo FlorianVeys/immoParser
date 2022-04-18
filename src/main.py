@@ -10,8 +10,9 @@ urls = {
 }
 
 if __name__ == "__main__":
+    home_dao = HomesDao()
+    
     homes = scrapUrls(urls)
     
-    home_dao = HomesDao()
     
     home_dao.save(homes)
