@@ -1,15 +1,17 @@
 from abc import ABC, abstractmethod
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium_stealth import stealth
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 
+from utils.sanitizer import Sanitizer
+
 
 class Scrapper(ABC):
     def __init__(self):
         self.driver = self.__construct_selenium_driver()
+        self.sanitizer = Sanitizer()
         super().__init__()
 
     def close_driver(self):

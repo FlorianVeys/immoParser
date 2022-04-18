@@ -18,7 +18,7 @@ class ImmowebParser(Scrapper):
         homes = []
         for card in cards:
             home = Home()
-            home.link = card.select(".card__title-link")[0]['href'].strip()
+            home.link = self.sanitizer.sanitizeLink(card.select(".card__title-link")[0]['href'].strip())
             home.price = card.select(
                 ".card--result__price .sr-only")[0].string.strip()
             homes.append(home)
